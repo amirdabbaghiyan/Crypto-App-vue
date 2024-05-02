@@ -37,6 +37,7 @@ const previousHandler = () => {
 
 const nextHandler = () => {
     page.value ++;
+    page.value > 10 ? page.value = 10 : true;
 };
 </script>
 
