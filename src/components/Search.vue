@@ -5,7 +5,7 @@
         placeholder="Search"
         v-model="text"/>
 
-        <select v-model="currency">
+        <select v-model="currency" @click="sendCurrency">
             <option value="usd">usd</option>
             <option value="eur">eur</option>
             <option value="jpy">jpy</option>
@@ -16,7 +16,7 @@
             <PulseLoader v-if="isLoading" :loading="loading" color="var(--primary-color)" size="8px"/>
 
             <ul v-else>
-                <li
+                <li 
                 v-for="coin in coins"
                 :key="coin.id">
                     <img
@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, defineEmits } from 'vue';
 import { searchCoin } from '@/server/api.js';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
@@ -61,7 +61,12 @@ const fetchApi = async () => {
         }
     }
 };
+const emit = defineEmits(['currency']);
+const sendCurrency = () => {
+    emit('currency', currency.value);
+}
 
+     
 watch(text, fetchApi);
 </script>
 

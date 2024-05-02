@@ -20,7 +20,7 @@
                 v-for="coin in props.coins"
                 :key="coin.id"
                 :coin="coin"
-                @update:chart="setChart" />
+                @chart="setChart" />
             </tbody>
         </table>
     </div>
@@ -33,10 +33,10 @@ import TableRow from './TableRow.vue';
 
 const props = defineProps(['isLoading', 'coins']);
 
-const emit = defineEmits(['update:chart']);
 
+const emit = defineEmits(['chart']);
 const setChart = (chart) => {
-  emit('update:chart', chart);
+  emit('chart', chart);
 };
 </script>
 

@@ -26,19 +26,25 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, defineEmits } from 'vue';
 
 const page = ref(1);
 
 const previousHandler = () => {
     if (page.value <= 1) return;
     page.value --;
+    sendPage();
 };
 
 const nextHandler = () => {
     page.value ++;
     page.value > 10 ? page.value = 10 : true;
+    sendPage()
 };
+const emit = defineEmits(['page']);
+const sendPage = () => {
+    emit('page', page.value)
+}
 </script>
 
 <style>
