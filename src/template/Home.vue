@@ -4,11 +4,11 @@
         @currency='setCurrency'
         />
         
-        <!-- <TableCoin
+        <TableCoin
         :coins="coins"
         :is-loading="isLoading"
         @update:chart="setChart"
-        /> -->
+        />
         
         <Pagination
         @page="setPage"
@@ -24,7 +24,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue';
 // // components
-// import TableCoin from '@/components/TableCoin';
+import TableCoin from '@/components/TableCoin';
 import Pagination from '@/components/Pagination';
 // import Chart from '@/parts/Chart/Chart.vue';
 import Search from '@/components/Search';

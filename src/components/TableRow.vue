@@ -15,16 +15,24 @@
     </td>
     <td>{{ props.coin.total_volume.toLocaleString() }}</td>
     <td>
-      <img :src="`${props.coin.price_change_percentage_24h} > 0 ? ${chartUp} : ${chartDown}`" :alt="props.coin.name" />
+      <!-- <img :src="`${props.coin.price_change_percentage_24h} > 0 ? ${chartUp} : ${chartDown}`" :alt="props.coin.name" /> -->
+      <!-- <div v-if="`${props.coin.price_change_percentage_24h.toFixed(2)} < 0 `">
+        <img src="../assets/images/chart-up.png" :alt="props.coin.name" />
+      </div>
+      <div v-else>
+        <img src="../assets/images/chart-down.png" :alt="props.coin.name" />
+      </div> -->
     </td>
   </tr>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-import chartUp from '@/assets/chart-up.svg';
-import chartDown from '@/assets/chart-down.svg';
+import { defineProps, ref } from 'vue';
+import chartUp from '@/assets/images/chart-up.svg';
+import chartDown from '@/assets/images/chart-down.svg';
 import { marketChart } from '@/server/api';
+
+const amir = ref();
 
 const props = defineProps({
   coin: Object,
@@ -36,6 +44,11 @@ const showHandler = async () => {
     const res = await fetch(marketChart(props.coin.id));
     const json = await res.json();
     props.setChart({ ...json, coin: props.coin });
+    if (props.coin.price_change_percentage_24h > 0){
+      amir.value = chartUp;
+    }else{
+      amir.value = chartDown;
+    }
   } catch (error) {
     props.setChart(null);
   }
