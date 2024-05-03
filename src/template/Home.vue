@@ -46,8 +46,7 @@ const setPage = (newPage) => {
 
 const setCurrency = (newCurrency) => {
     currency.value = newCurrency;
-    console.log(newCurrency)
-}
+};
 
 const getData = async () => {
     try {

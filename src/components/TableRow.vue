@@ -6,15 +6,23 @@
         <span>{{ props.coin.symbol.toUpperCase() }}</span>
       </div>
     </td>
+
     <td>{{ props.coin.name }}</td>
+
     <td>
-      \${{ props.coin.current_price.toLocaleString() }}
+      <span v-if="currency === 'usd'">$</span>
+      <span v-else-if="currency === 'eur'">€</span>
+      <span v-else-if="currency === 'jpy'">¥</span>
+      {{ props.coin.current_price.toLocaleString() }}
     </td>
+
     <td :class="conditionSuccess ? 'success' : 'error'" >
       {{ props.coin.price_change_percentage_24h.toFixed(2) }}%
     </td>
+
     <td>{{ props.coin.total_volume.toLocaleString() }}</td>
     <td>
+
       <img v-if="conditionChart" src="../assets/images/chart-up.png" :alt="props.coin.name" />
       <img v-else src="../assets/images/chart-down.png" :alt="props.coin.name" />
     </td>
@@ -27,11 +35,14 @@ import { defineProps, ref } from 'vue';
 
 const conditionChart = ref();
 const conditionSuccess = ref();
+const currency = ref(localStorage.getItem("currency"));
 
-const props = defineProps({
-  coin: Object,
-  setChart: Function
-});
+// const props = defineProps({
+//   coin: Object,
+//   setChart: Function
+// });
+
+const props = defineProps(['coin', 'setChart']);
 
 // const showHandler = async () => {
 //   try {

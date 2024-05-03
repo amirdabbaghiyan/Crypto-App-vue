@@ -34,10 +34,11 @@ import { ref, watch, defineEmits } from 'vue';
 import { searchCoin } from '@/server/api.js';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
-const currency = ref('usd');
+const currency = ref(localStorage.getItem("currency") || 'usd');
 const text = ref('');
 const coins = ref([]);
 const isLoading = ref(false);
+localStorage.setItem("currency" , currency.value);
 
 const fetchApi = async () => {
     coins.value = [];
@@ -65,9 +66,11 @@ const emit = defineEmits(['currency']);
 const sendCurrency = () => {
     emit('currency', currency.value);
 }
-
      
 watch(text, fetchApi);
+watch(currency, () => {
+    localStorage.setItem( "currency" , currency.value );
+});
 </script>
 
 <style>

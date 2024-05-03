@@ -4,9 +4,9 @@
         @click="previousHandler"
         :class="{ disable : page === 1 }">Previous</button>
         
-        <p :class="{ selected : page === 1 }">{{ 1 }}</p>
+        <p :class="{ selected : page === 1 }" @click="selectNum">{{ 1 }}</p>
         
-        <p :class="{ selected : page === 2 }">{{ 2 }}</p>
+        <p :class="{ selected : page === 2 }" @click="selectNum">{{ 2 }}</p>
         
         <template v-if="page > 2 && page < 9">
             <span>...</span>
@@ -15,9 +15,9 @@
         
         <span>...</span>
         
-        <p :class="{ selected : page === 9 }">{{ 9 }}</p>
+        <p :class="{ selected : page === 9 }" @click="selectNum">{{ 9 }}</p>
         
-        <p :class="{ selected : page === 10 }">{{ 10 }}</p>
+        <p :class="{ selected : page === 10 }" @click="selectNum">{{ 10 }}</p>
         
         <button
         @click="nextHandler"
@@ -37,10 +37,16 @@ const previousHandler = () => {
 };
 
 const nextHandler = () => {
+    if (page.value >= 10) return;
     page.value ++;
-    page.value > 10 ? page.value = 10 : true;
     sendPage()
 };
+
+const selectNum = (e) => {
+    page.value = Number(e.target.textContent);
+    sendPage()
+}
+
 const emit = defineEmits(['page']);
 const sendPage = () => {
     emit('page', page.value)
@@ -73,6 +79,7 @@ const sendPage = () => {
     width: 25px;
     text-align: center;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .disable {
