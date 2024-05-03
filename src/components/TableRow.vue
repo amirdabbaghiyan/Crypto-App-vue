@@ -10,10 +10,7 @@
     <td>
       \${{ props.coin.current_price.toLocaleString() }}
     </td>
-    <td v-if="conditionSuccess" class="success" >
-      {{ props.coin.price_change_percentage_24h.toFixed(2) }}%
-    </td>
-    <td v-else class="error" >
+    <td :class="conditionSuccess ? 'success' : 'error'" >
       {{ props.coin.price_change_percentage_24h.toFixed(2) }}%
     </td>
     <td>{{ props.coin.total_volume.toLocaleString() }}</td>
