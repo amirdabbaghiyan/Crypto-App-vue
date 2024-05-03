@@ -7,7 +7,7 @@
         <TableCoin
         :coins="coins"
         :is-loading="isLoading"
-        @update:chart="setChart"
+        @chart="setChart"
         />
         
         <Pagination
@@ -16,7 +16,7 @@
 
         <!-- <Chart
         v-if="chart"
-        :chart="chart" @update:chart="setChart"
+        :chart="chart" @chart="setChart"
         /> -->
     </main>
 </template>
@@ -26,7 +26,7 @@ import { ref, onMounted, watch } from 'vue';
 // // components
 import TableCoin from '@/components/TableCoin';
 import Pagination from '@/components/Pagination';
-// import Chart from '@/parts/Chart/Chart.vue';
+// import Chart from '@/parts/Chart.vue';
 import Search from '@/components/Search';
 import { getCoinList } from '@/server/api';
 

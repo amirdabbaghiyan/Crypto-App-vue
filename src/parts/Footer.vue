@@ -1,6 +1,6 @@
 <template>
   <footer id="footer">
-    <p>Developers by Amir with ❤️</p>
+    <p>Developer by Amir with ❤️</p>
   </footer>
 </template>
 

@@ -3,7 +3,6 @@
         <line-chart :chart-data="chartData" :options="chartOptions"/>
     </div>
 </template>
-
 <script>
 import { Line } from 'vue-chartjs'
 

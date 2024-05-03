@@ -33,7 +33,6 @@ import TableRow from './TableRow.vue';
 
 const props = defineProps(['isLoading', 'coins']);
 
-
 const emit = defineEmits(['chart']);
 const setChart = (chart) => {
   emit('chart', chart);

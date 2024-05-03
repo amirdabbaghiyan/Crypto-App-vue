@@ -12,10 +12,10 @@ body {
     padding: 10px;
     background-color: #1F1F1F;
     color: var(--text-color);
-    font-family: 'Inter-Medium', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Inter-Thin', sans-serif;
+    line-height: 1.5;
 }
 :root {
-    line-height: 1.5;
     --primary-color: #3874ff;
     --secondary-color: #23242e;
     --bg-color: #18181ce6;

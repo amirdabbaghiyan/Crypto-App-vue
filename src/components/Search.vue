@@ -6,9 +6,9 @@
         v-model="text"/>
 
         <select v-model="currency" @click="sendCurrency">
-            <option value="usd">usd</option>
-            <option value="eur">eur</option>
-            <option value="jpy">jpy</option>
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="jpy">JPY</option>
         </select>
 
         <div v-if="coins.length || isLoading"

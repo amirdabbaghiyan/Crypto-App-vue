@@ -9,11 +9,12 @@
         <p>{{ chart.coin.name }}</p>
       </div>
 
-      <!-- <div :class="graph">
+      <div :class="graph">
         <ChartComponent
         :data="convertedData"
-        :type="type" />
-      </div> -->
+        :type="type"
+         />
+      </div>
 
       <div
       :class="types"
@@ -42,14 +43,14 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { convertData } from '../../helpers/convertData';
-// import ChartComponent from './ChartComponent.vue';
+import { ref, defineProps } from 'vue';
+// import { convertData } from '../../helpers/convertData';
+import ChartComponent from '@/components/ChartComponent.vue';
 
-// const props = defineProps({
-//   chart: Object,
-//   setChart: Function
-// });
+const props = defineProps({
+  chart: Object,
+  setChart: Function
+});
 
 const type = ref('prices');
 
